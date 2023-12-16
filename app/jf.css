@@ -1,18 +1,133 @@
+/* CSS Reset from https://andy-bell.co.uk/a-more-modern-css-reset/ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, h5, h6, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, h5, h6,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+
+
+/* JohnFujiwara.com */
 html
 {
+    font: 16px Arial;
     min-height: 100%;
-    background: linear-gradient(-20deg, rgba(255,255,220,0.4), rgba(220,235,255,0.4)),
-                linear-gradient(160deg, rgba(0,0,0,0), rgba(255,255,255,0.4));
     padding: 0;
     margin: 0;
+    background-image: linear-gradient(-20deg, rgba(255,255,220,0.8), rgba(220,235,255,0.4)),
+      linear-gradient(160deg, rgba(0,0,0,0), rgba(255,255,255,0.8)),
+      url(./svgbackgrounds.com.svg);
+      /* Lowest-layer background SVG by SVGBackgrounds.com ("Subtle Prism") */
 }
 body
 {
-    padding: 0 0.5em;
-    margin: 0;
-}
-main
-{
+    display: grid;
+    box-sizing: content-box;
+    grid-template-rows: 4em auto 2em;
+    gap: 1em 0;
+    padding: 0 2em;
     max-width: 920px;
     margin: 0 auto;
+    background: white;
+}
+body > header
+{
+    outline: 1px solid #0f0;
+    margin: 0;
+}
+body > header nav > ul
+{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+body > header nav > ul > li
+{
+  padding: 0;
+  margin: 0;
+}
+body > main
+{
+    padding: 0 0.5em;
+    outline: 1px solid #00f;
+    margin: 0;
+}
+body > footer
+{
+    outline: 1px solid #f00;
+    margin: 0;
+}
+p
+{
+  text-indent: 0.25em;
+  margin-bottom: 0.5em;
 }

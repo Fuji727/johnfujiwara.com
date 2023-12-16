@@ -6,72 +6,61 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <h1>John Fujiwara</h1>
-      <aside>
-        University Place, WA
-      </aside>
-      <h2>Team-Focused Principal Developer</h2>
-      <h3>Summary</h3>
-      <p>I am looking for a Senior/Principal Web Developer, Development Team Leader, or Architect position in a technology-oriented, people-focused company. My interests lie in web application design, implementation, and optimization. My strengths lie in designing .NET and web standard solutions that solve real users’ problems, with a collaborative communication style with end users and/or product owners. I also enjoy finding ways to make development teams more productive and OOP- and TDD-focused. I strongly prefer remote work but also value in-person working sessions when it justifies the commute time.</p>
-      <ul>
-        <li>Top-rated developer on the team most years</li>
-        <li>Promoted multiple times from within</li>
-        <li>Mentor to Junior developers</li>
-        <li>Tenacious problem-solver</li>
-        <li>Love learning to achieve mastery and then incorporating into team best practices</li>
-      </ul>
-      <h3>Experience and Successes</h3>
-      <h4>Russell Investments, Seattle, WA — Financial Services</h4>
-      <h4>February 2007 to Present</h4>
-      <h5>Principal Architect, Web Development — October 2021</h5>
-      <p>Upgraded Sitecore 9.0 to 10.2 • Rebuilt Octopus process steps to achieve layered, clean deployments of a large, monolithic solution • Wrote multi-lingual ASP.NET MVC Razor views and React components with WebAPI data sources, using TDD • Currently architecting migration to modern composable headless Web CMS using Next.js and .NET Core WebAPI</p>
-      <h5>Associate Director, Application Development — March 2019</h5>
-      <p>Led team (6 direct reports, 3 indirect reports, 2 contractors) through multiple, multi-year projects • Personally wrote a daily task to build a manifest of data needs from unpredictable content and then extract comprehensive fund data from a custom internal WebAPI, still used today • Personally wrote logic using a T4 text template to generate C# classes from dynamic database objects, so developers can write strongly-typed code</p>
-      <h5>Manager, Application Development — May 2017</h5>
-      <p>Replaced 5 extranet sites with authenticated features on main website • Administered Sitecore: content editor authorization, scheduled tasks, and publishing service • Trained and mentored 5 developers in Sitecore • Resolved site integration issues with internal systems</p>
-      <h5>Lead Web Developer — March 2015</h5>
-      <p>Introduced to Sitecore and was able to deliver advanced configuration and development within 6 months • Replaced 2 legacy websites with one global Sitecore site • Developed 10+ multi-language components using controller-based WebAPI in C# • Developed custom Sitecore pipelines using config transforms and C#</p>
-      <h5>Senior Web Developer — April 2011</h5>
-      <p>Optimized in-house C#, SQL, and XSLT code for global use • Basic support and maintenance of iOS application, Russell Investments Insights (no longer available)</p>
-      <h5>Web Developer — February 2007</h5>
-      <p>Built the Economic Recovery Dashboard, replicated in 3 regions and viewed millions of times since • Built common web standards Javascript and CSS framework</p>
-
-      <h4>University of Maryland Medical System, Baltimore, MD — Healthcare</h4>
-      <h4>December 2005 to January 2007</h4>
-      <h5>Programmer</h5>
-      <p>Full lifecycle development on five internal ASP.NET 2.0 web applications • Converted six legacy web applications to ASP.NET</p>
-      <h4>Educate, Inc., Baltimore, MD — Education Tutoring</h4>
-      <h4>May 2005 to December 2005</h4>
-      <h5>Application Developer II</h5>
-      <p>Full-stack ASP.NET web development</p>
-      <h4>Milner-Fenwick, Inc., Timonium, MD — Medical Video Education</h4>
-      <h4>February 2002 to May 2005</h4>
-      <h5>Webmaster &amp; Graphic Artist</h5>
-      <p>Sole ASP.NET developer for health video streaming website</p>
-
-      <h3>Certifications</h3>
-      <h4>Sitecore Certified Developer, August 2015</h4>
-
-      <h3>Education</h3>
-      <ul>
-        <li>The Art Institute of Seattle, Seattle, Washington — AAA, Multimedia & Web Design, September 2001</li>
-        <li>University of Virginia, Charlottesville, Virginia — BA, Biology, May 1996</li>
-      </ul>
-
-      <h3>Core technologies</h3>
-      <ul>
-        <li>C#</li>
-        <li>.NET Core WebAPI</li>
-        <li>Sitecore 8.1-10.2 development, configuration, and administration</li>
-        <li>Javascript</li>
-        <li>Next.js</li>
-        <li>React</li>
-        <li>ASP.NET Core MVC</li>
-        <li>T-SQL and database design</li>
-        <li>Advanced Git, including main branch administration</li>
-        <li>Octopus deployment process design</li>
-        <li>Preference for TDD</li>
-      </ul>
+      <h2>Who I am</h2>
+      <p>Hello, my name is John Fujiwara and I live in beautiful University Place, a neighborhood of Tacoma in Washington State, USA.</p>
+      <p>I&apos;ve been with my current employer for 17 years and have done very well for the company, my coworkers, and my family. But now I&apos;m ready for a work challenge that speaks more to my personal values and gives me more control over my time and work conditions.</p>
+      <p>I have a broadly-applicable skillset in web standards and .NET development and an aptitude for understanding and solving problems. I have an ability to find sustainable solutions with real people and their needs in mind.</p>
+      <p>Please take a look at this site for an explanation of my specific development strengths, examples of my work, and more about the kind of employer I'm looking for.</p>
+      <h2>My general development approach</h2>
+      <p>Here's my general approach to development of an MVP:</p>
+      <ol>
+        <li><em>Completely</em> understand the problem and the solution. This is where deep conversations with anticipated end users and subject matter experts, iterative sketches of ideas, and honest discussions about scope and maintenance workload are absolutely vital. Beginning development before completely understanding the solution is only going to take you further away from a happy outcome.</li>
+        <li>Design the application architecture according to application uptime, end user locations, processing delays, etc.</li>
+        <li>Nail down the data schema: If you set up the data schema and relationships correctly, you are building on a solid foundation.</li>
+        <li>Write the implementations of your business logic by <strong>first</strong> writing your unit tests (TDD). These unit tests will accurately and completely describe the desired behaviors defined by Step #1 and also cover errors and invalid requests. (Follow &ldquo;Right BICEP!&rdquo;)</li>
+        <li>Train the other developers! This is often the step where multiple other developers begin writing logic, components and UI elements. If they don&apos;t understand the system design and application organization, they&apos;re going to re-write existing code and put logic in the wrong place, guaranteed.</li>
+        <li>Create the RESTful API or GraphQL service on top of your business logic. Your SDETs should now be able to start testing at full speed via Postman at this point.</li>
+        <li>Create your UI. Importantly, focus on getting your most-important &ldquo;round trip&rdquo; (i.e. request from UI to API and then render results) working ASAP. Then, iterate and refine with the shortest possible feedback loop with end users.</li>
+        <li>While UI work continues (it always takes the longest), add telemetry and monitoring.</li>
+        <li>Test and release!</li>
+        <li>Refine, iterate, and enhance the application and automate onerous maintenance tasks.</li>
+      </ol>
+      <h2>W3C Standards Web Development (23 years&apos; experience)</h2>
+      <details>
+        <summary>W3C Standards Web Development (23 years&apos; experience)</summary>
+        <p>I began my career with W3C standards-based web development, focusing on using:</p>
+        <ul>
+          <li>HTML for declarative semantic meaning</li>
+          <li>CSS for styling, adaptability, and simple images/animation</li>
+          <li>and finally, behavioral Javascript only when necessary</li>
+        </ul>
+        <p>This foundation of web fundamentals continues to serve me well all these years later.</p>
+      </details>
+      <h2>.NET Development with C#, React, and NextJS (18 years&apos; experience)</h2>
+      <details>
+        <summary>.NET Development with C#, React, and NextJS (18 years&apos; experience)</summary>
+        <p>I started with ASP.NET in version 1.1 and still use MVC Views in .NET 8 today.</p>
+        <p>I use .NET WebAPI to make RESTful services.</p>
+        <p>I use React when highly-interactive components are required.</p>
+        <p>I am increasing my experience with NextJS (this website is based on it) and find its server-rendering and predictive caching to be killer features. I&apos;m excited to further my usage of it in professional projects.</p>
+      </details>
+      <h2>Sitecore WCMS Development (8 years&apos; experience)</h2>
+      <details>
+        <summary>Sitecore WCMS Development (8 years&apos; experience)</summary>
+      </details>
+      <h2>Software Development and Problem-Solving (18 years&apos; experience)</h2>
+      <details>
+        <summary>Software Development and Problem-Solving (18 years&apos; experience)</summary>
+        <p>OOP, TDD, Advanced debugging, optimizing systems</p>
+        <p>I take my work personally and see problems through to full resolution. I don't wait for someone else to find the answers for me.</p>
+        <p></p>
+      </details>
+      <h2>Team Leader (8 years&apos; experience)</h2>
+      <details>
+        <summary>Team Leader (8 years&apos; experience)</summary>
+        <p>I can fluidly bridge understanding gaps between programmers and non-programmers, including mentoring new developers.</p>
+        <p></p>
+      </details>
     </main>
   )
 }

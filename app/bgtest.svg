@@ -1,0 +1,21 @@
+<svg 
+  xmlns='http://www.w3.org/2000/svg' 
+  width="50"
+  height="50"
+  viewBox="0 0 120 120"
+>
+  <polygon 
+    fill="#000000"
+    points="
+      0 0
+      120 120
+      120 0"
+  />
+  <polygon 
+    fill="#ffffff"
+    points="
+      0 0
+      0 120
+      120 120"
+  />
+</svg>
