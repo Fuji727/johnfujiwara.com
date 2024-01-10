@@ -11,6 +11,7 @@ export default function Home() {
     <main>
       <h1>Demos</h1>
       <ul>
+        <li><Link href="/demos/cashflow">Basic cash flow tool</Link></li>
         <li><Link href="/demos/tictactoe">React Tic Tac Toe game</Link></li>
       </ul>
     </main>
