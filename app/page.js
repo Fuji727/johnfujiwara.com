@@ -7,23 +7,22 @@ export default function Home() {
   return (
     <main>
       <h2>Who I am</h2>
-      <p>Hello, my name is John Fujiwara and I live in beautiful University Place, a neighborhood of Tacoma in Washington State, USA.</p>
-      <p>I&apos;ve been with my current employer for 17 years and have done very well for the company, my coworkers, and my family. But now I&apos;m ready for a work challenge that speaks more to my personal values and gives me more control over my time and work conditions.</p>
+      <p>Hello, my name is John Fujiwara and I am a full-stack web developer living with my family in beautiful University Place, a neighborhood of Tacoma, in Washington State, USA.</p>
+      {/* <p>I&apos;ve been with my current employer for 17 years and have done very well for the company, my coworkers, and my family. But now I&apos;m ready for a work challenge that speaks more to my personal values and gives me more control over my time and work conditions.</p> */}
       <p>I have a broadly-applicable skillset in web standards and .NET development and an aptitude for understanding and solving problems. I have an ability to find sustainable solutions with real people and their needs in mind.</p>
       <p>Please take a look at this site for an explanation of my specific development strengths, examples of my work, and more about the kind of employer I'm looking for.</p>
       <h2>My general development approach</h2>
-      <p>Here's my general approach to development of an MVP:</p>
+      <p>After a Minimum Viable Product has been clearly defined according to project goals and the application architecture has been defined according to the needs of application uptime, end user locations, processing delays, etc., then development work can begin. This is the approach that I often take:</p>
       <ol>
-        <li><em>Completely</em> understand the problem and the solution. This is where deep conversations with anticipated end users and subject matter experts, iterative sketches of ideas, and honest discussions about scope and maintenance workload are absolutely vital. Beginning development before completely understanding the solution is only going to take you further away from a happy outcome.</li>
-        <li>Design the application architecture according to application uptime, end user locations, processing delays, etc.</li>
-        <li>Nail down the data schema: If you set up the data schema and relationships correctly, you are building on a solid foundation.</li>
-        <li>Write the implementations of your business logic by <strong>first</strong> writing your unit tests (TDD). These unit tests will accurately and completely describe the desired behaviors defined by Step #1 and also cover errors and invalid requests. (Follow &ldquo;Right BICEP!&rdquo;)</li>
-        <li>Train the other developers! This is often the step where multiple other developers begin writing logic, components and UI elements. If they don&apos;t understand the system design and application organization, they&apos;re going to re-write existing code and put logic in the wrong place, guaranteed.</li>
-        <li>Create the RESTful API or GraphQL service on top of your business logic. Your SDETs should now be able to start testing at full speed via Postman at this point.</li>
-        <li>Create your UI. Importantly, focus on getting your most-important &ldquo;round trip&rdquo; (i.e. request from UI to API and then render results) working ASAP. Then, iterate and refine with the shortest possible feedback loop with end users.</li>
-        <li>While UI work continues (it always takes the longest), add telemetry and monitoring.</li>
-        <li>Test and release!</li>
-        <li>Refine, iterate, and enhance the application and automate onerous maintenance tasks.</li>
+        <li><strong>Completely understand</strong> the MVP problem and the solution. This is where deep conversations with anticipated end users and subject matter experts, iterative sketches of ideas, and honest discussions about scope and maintenance workload are absolutely vital. Beginning development before completely understanding the solution is only going to take you further away from a happy outcome.</li>
+        <li>Nail down the <strong>data schema</strong>: If you set up the data schema and relationships correctly, you are building on a solid foundation.</li>
+        <li>Write the implementations of your business logic by <strong>first writing my unit tests</strong> (TDD). This tends to save me a lot of time because my classes are inherently testable and I can be certain that my functionality is correct and solid because these unit tests will accurately and completely describe the desired behaviors defined by Step #1 and also cover errors and invalid requests. (Follow &ldquo;Right BICEP!&rdquo;)</li>
+        <li><strong>Train the other developers</strong>! This is often the step where multiple other developers begin writing logic, components and UI elements. If they don&apos;t understand the system design and application organization, they&apos;re going to re-write existing code and put logic in the wrong place, guaranteed.</li>
+        <li><strong>Create the RESTful API</strong> or GraphQL service on top of your business logic. Your SDETs should now be able to start testing at full speed via Postman at this point.</li>
+        <li>Build the UI. Importantly, I first focus on getting the <strong>most-important &ldquo;round trip&rdquo;</strong> (i.e. request from UI to API and then render results) working ASAP. Then, iterate and refine with the shortest possible feedback loop with end users.</li>
+        <li>While UI work continues (it always takes the longest), add <strong>telemetry and monitoring</strong>.</li>
+        <li><strong>Test and release!</strong></li>
+        <li>Refine, iterate, and enhance the application and <strong>automate onerous maintenance tasks</strong>.</li>
       </ol>
       <h2>W3C Standards Web Development (23 years&apos; experience)</h2>
       <details>
@@ -31,7 +30,8 @@ export default function Home() {
         <p>I began my career with W3C standards-based web development, focusing on using:</p>
         <ul>
           <li>HTML for declarative semantic meaning</li>
-          <li>CSS for styling, adaptability, and simple images/animation</li>
+          <li>CSS for styling, adaptability, and simple animation</li>
+          <li>SVG for simple graphical elements</li>
           <li>and finally, behavioral Javascript only when necessary</li>
         </ul>
         <p>This foundation of web fundamentals continues to serve me well all these years later.</p>

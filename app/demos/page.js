@@ -1,4 +1,5 @@
-import Game from "../src/app";
+import Link from "next/link";
+import Game from "../src/tictactoe";
 
 export const metadata = {
   title: 'John Fujiwara - Team-Focused Principal Developer',
@@ -9,7 +10,9 @@ export default function Home() {
   return (
     <main>
       <h1>Demos</h1>
-      <Game />
+      <ul>
+        <li><Link href="/demos/tictactoe">React Tic Tac Toe game</Link></li>
+      </ul>
     </main>
   )
 }

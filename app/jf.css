@@ -126,8 +126,12 @@ body > footer
     outline: 1px solid #f00;
     margin: 0;
 }
+h2
+{
+  margin: 0.5em 0;
+}
 p
 {
-  text-indent: 0.25em;
+  /*text-indent: 0.25em;*/
   margin-bottom: 0.5em;
 }
