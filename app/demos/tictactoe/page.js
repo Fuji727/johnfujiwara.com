@@ -1,4 +1,4 @@
-import Game from "../../src/tictactoe.js";
+import Game from "./tictactoe.js";
 
 export const metadata = {
   title: 'React Tic Tac Toe game',

@@ -1,6 +1,6 @@
 'use client';
 
-import "../tictactoe.css";
+import "./tictactoe.css";
 import { useState } from 'react';
 
 function Square({ index, value, onSquareClick }) {

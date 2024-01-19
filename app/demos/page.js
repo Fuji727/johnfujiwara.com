@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Game from "../src/tictactoe";
 
 export const metadata = {
   title: 'John Fujiwara - Team-Focused Principal Developer',
