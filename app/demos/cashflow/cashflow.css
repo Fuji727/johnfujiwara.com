@@ -1,0 +1,32 @@
+table.cashflow {
+    font-size: 0.8em;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    overflow-wrap: break-word;
+}
+table.cashflow th,
+table.cashflow td {
+    border: 1px solid #ccc;
+    padding: 0.25em 0;
+}
+table.cashflow tr > th:first-child {
+    width: 8em;
+}
+table.cashflow > thead {
+    background: #e2e2e2;
+}
+table.cashflow > thead th {
+    padding: 0.25em;
+    text-align: left;
+}
+table.cashflow > tbody > tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+table.cashflow > tbody > tr:hover {
+    background-color: #ddd;
+}
+table.cashflow > tbody input {
+    display: inline-block;
+    width: 100%;
+}
