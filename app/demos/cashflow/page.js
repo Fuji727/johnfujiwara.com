@@ -10,7 +10,8 @@ import CashFlow from './cashflow.js';
   
   export default function Home() {
     const STORAGE_KEY = 'cashflow object';
-    let [cashFlowModel, setCashFlowModel] = React.useState(null);
+    const [cashFlowModel, setCashFlowModel] = React.useState(null);
+    const [ savingsRequiredPerPeriod, setSavingsRequiredPerPeriod ] = React.useState(0);
     let isInitialPageLoad = true;
 
     React.useEffect(() => {
@@ -18,15 +19,13 @@ import CashFlow from './cashflow.js';
       {
         const test = localStorage.getItem(STORAGE_KEY);
         let obj = ParseCashFlowModel(test);
-        if (obj)
-        {
-          setCashFlowModel(obj);
-        }
-        else
+        if (!obj)
         {
           obj = new CashFlowModel(MonthNames);
         }
         console.log(obj);
+        setCashFlowModel(obj);
+        setSavingsRequiredPerPeriod(obj.Results.SavingsRequiredPerPeriod);
         isInitialPageLoad = false;
       }
     }, []);
@@ -34,6 +33,7 @@ import CashFlow from './cashflow.js';
     function saveCashFlowModelToLocalStorage()
     {
       cashFlowModel.UpdateResults();
+      setSavingsRequiredPerPeriod(cashFlowModel.Results.SavingsRequiredPerPeriod);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(cashFlowModel));
     }
 
@@ -53,10 +53,10 @@ import CashFlow from './cashflow.js';
               <p>In the first row of the table, give the expense a name. Then, enter the amount that is due in each month.</p>
               <p>If you have more expenses you want to track, just click the "Add new expense" button and repeat.</p>
               <CashFlow cashFlowModel={cashFlowModel} labelAdjustment={label => label.substring(0,3)} />
-              <button onClick={saveCashFlowModelToLocalStorage}>Save to local storage</button>
+              <button onClick={saveCashFlowModelToLocalStorage}>Save</button>
               <hr />
               <h3>Results:</h3>
-              <p>You should save ${cashFlowModel.Results.SavingsRequiredPerPeriod} per period.</p>
+              <p>You should save ${savingsRequiredPerPeriod} per period.</p>
             </>
         }
       </>

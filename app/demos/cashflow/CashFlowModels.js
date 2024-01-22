@@ -7,7 +7,7 @@ class CashFlowModel
         this.PeriodNames = periodNames;
         this.NumberOfPeriods = this.PeriodNames.length;
         this.Results = {};
-        this.AddExpense();
+        this.Expenses = [];
         this.UpdateResults();
     }
     AddExpense = function(newExpenseName)
@@ -15,7 +15,15 @@ class CashFlowModel
         if (!this.Expenses)
             this.Expenses = [];
 
-        this.Expenses.push(new ExpenseModel(newExpenseName || `Expense #${this.Expenses.length + 1}`, this.NumberOfPeriods));
+        this.Expenses.push(new ExpenseModel(newExpenseName || `New expense`, this.NumberOfPeriods));
+    }
+    RemoveExpense = function(expenseIndex)
+    {
+        if (this.Expenses && this.Expenses[expenseIndex])
+        {
+            this.Expenses.splice(expenseIndex, 1);
+            this.UpdateResults;
+        }
     }
     UpdateExpenseName = function(expenseIndex, newExpenseName)
     {
@@ -24,6 +32,7 @@ class CashFlowModel
     UpdatePaymentAmount = function(expenseIndex, paymentIndex, newPaymentAmount)
     {
         this.Expenses[expenseIndex].Payments[paymentIndex] = newPaymentAmount;
+        this.UpdateResults();
     }
     UpdateResults = function()
     {

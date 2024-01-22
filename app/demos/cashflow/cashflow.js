@@ -5,11 +5,13 @@ import { CashFlowModel, ParseCashFlowModel, MonthNames } from './CashFlowModels'
 export default function CashFlow({cashFlowModel, labelAdjustment})
 {
     let labelAdjustmentToUse = labelAdjustment || (label => label);
-    let [ expenses, setExpenses ] = useState(cashFlowModel?.Expenses);
+    const [ expenses, setExpenses ] = useState(cashFlowModel?.Expenses);
+    const [ balanceByPeriod, setBalanceByPeriod ] = useState(cashFlowModel?.Results.BalanceByPeriod);
 
     function SaveExpenses()
     {
         setExpenses([...cashFlowModel.Expenses]);
+        setBalanceByPeriod([...cashFlowModel.Results.BalanceByPeriod]);
     }
     function addNewExpenseHandler()
     {
@@ -39,56 +41,40 @@ export default function CashFlow({cashFlowModel, labelAdjustment})
 
     return cashFlowModel && cashFlowModel.PeriodNames && (
         <>
-            <ExpenseTable cashFlowModel={cashFlowModel} labelAdjustment={labelAdjustmentToUse}>
-                {cashFlowModel.Expenses && cashFlowModel.Expenses.map((expense,i) => (
-                    <ExpenseRow key={`expense${i+1}`} expenseId={i} expense={expense} expenseNameChangeHandler={expenseNameChangeHandler} paymentChangeHandler={paymentChangeHandler} />
-                ))}
-            </ExpenseTable>
-            <button onClick={addNewExpenseHandler}>Add another expense</button>
-        </>
-    );
-}
-function ExpenseTable({children, cashFlowModel, labelAdjustment})
-{
-    return (
-        <>
             <table className="cashflow">
                 <thead>
                     <tr>
                         <th scope="col">Expense name</th>
                         {cashFlowModel.PeriodNames.map(p =>
-                            <th key={`col_${p}`} scope="col">{labelAdjustment(p)}</th>
+                            <th key={`col_${p}`} scope="col">{labelAdjustmentToUse(p)}</th>
                         )}
                         <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {children}
+                    {expenses && expenses.map((expense,expenseIndex) => (
+                        <tr key={`e${expenseIndex}`}>
+                            <th scope="row"><input type="text" data-expense-id={expenseIndex} onChange={expenseNameChangeHandler} defaultValue={expense.Name} /></th>
+                            {expense.Payments.map((thisPayment,paymentIndex) => {
+                                const thisKey = `e${expenseIndex}_p${paymentIndex}`;
+                                return <td key={thisKey}><input type="text" data-expense-id={expenseIndex} data-payment-id={paymentIndex} onChange={paymentChangeHandler} defaultValue={thisPayment} /></td>
+                            })}
+                            <td><button onClick={() => cashFlowModel.RemoveExpense(expenseIndex)}>X</button></td>
+                        </tr>
+                    ))}
                 </tbody>
-                <tfoot>
+                {expenses && expenses.length > 0 && <tfoot>
                     <tr>
                         <th scope="row">Running Balance:</th>
                         {cashFlowModel.PeriodNames.map((p,i) =>
-                            <td>{currencyFormatter.format(cashFlowModel.Results.BalanceByPeriod[i])}</td>
+                            <td key={`bal${i}`}>{currencyFormatter.format(balanceByPeriod[i])}</td>
                         )}
                         <td></td>
                     </tr>
-                </tfoot>
+                </tfoot>}
             </table>
+            <button onClick={addNewExpenseHandler}>Add another expense</button>
         </>
-    );
-}
-function ExpenseRow({expenseId, expense, expenseNameChangeHandler, paymentChangeHandler})
-{
-    return (
-        <tr>
-            <th scope="row"><input type="text" data-expense-id={expenseId} onChange={expenseNameChangeHandler} defaultValue={expense.Name} /></th>
-            {expense.Payments.map((thisPayment,i) => {
-                const thisKey = `e${expenseId}_p${i}`;
-                return <td key={thisKey}><input type="text" data-expense-id={expenseId} data-payment-id={i} onChange={paymentChangeHandler} defaultValue={thisPayment} /></td>
-            })}
-            <td><button>X</button></td>
-        </tr>
     );
 }
 let currencyFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
