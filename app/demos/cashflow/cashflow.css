@@ -1,32 +1,66 @@
-table.cashflow {
-    font-size: 0.8em;
+.cashflow {
+    font: 11px Arial;
+    margin: 1em auto;
+    border: 1px solid rgba(0,0,0,50%);
+    border-radius: 0.5em;
+    background: white;
+    padding: 1em 0.75em;
+    box-shadow: rgba(0,0,0,60%) 2px 2px 3px;
+}
+.cashflow > table {
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
     overflow-wrap: break-word;
+    background: white;
+    margin: 0 0 0.5em;
 }
-table.cashflow th,
-table.cashflow td {
+.cashflow > table th,
+.cashflow > table td {
     border: 1px solid #ccc;
     padding: 0.25em 0;
 }
-table.cashflow tr > th:first-child {
-    width: 8em;
+.cashflow > table tr > th:first-child {
+    width: 12em;
 }
-table.cashflow > thead {
+.cashflow > table tr > th:first-child > input {
+    text-align: left;
+}
+.cashflow > table tr > th:last-child {
+    width: 5em;
+}
+.cashflow > table > thead {
     background: #e2e2e2;
 }
-table.cashflow > thead th {
+.cashflow > table > thead th {
     padding: 0.25em;
     text-align: left;
 }
-table.cashflow > tbody > tr:nth-child(even) {
+.cashflow > table > tbody > tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-table.cashflow > tbody > tr:hover {
+.cashflow > table > tbody > tr:hover {
     background-color: #ddd;
 }
-table.cashflow > tbody input {
+.cashflow > table > tbody input {
     display: inline-block;
     width: 100%;
+    text-align: right;
+    background: transparent;
+    border: none;
+}
+.cashflow > table > tfoot {
+    border-top: 2px solid rgba(0,0,0,85%);
+}
+.cashflow > table > tfoot th,
+.cashflow > table > tfoot td {
+    border-color: transparent;
+}
+.cashflow > table > tfoot td {
+    text-align: right;
+}
+
+.cashflow > .results {
+    margin-top: 1em;
+    font-size: 1rem;
 }

@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { CashFlowModel, ParseCashFlowModel, MonthNames } from '@/app/demos/cashflow/CashFlowModels';
+import { ExpenseCollectionModel } from './ExpenseCollectionModel.js';
+import CashFlowCalculator from './CashFlowCalculator.js';
 import CashFlow from './cashflow.js';
 
 // export const metadata = {
@@ -10,53 +11,68 @@ import CashFlow from './cashflow.js';
   
   export default function Home() {
     const STORAGE_KEY = 'cashflow object';
-    const [cashFlowModel, setCashFlowModel] = React.useState(null);
-    const [ savingsRequiredPerPeriod, setSavingsRequiredPerPeriod ] = React.useState(0);
+    const [expenseCollection, setExpenseCollection] = React.useState(null);
+    const [results, setResults] = React.useState(null);
     let isInitialPageLoad = true;
 
     React.useEffect(() => {
       if (isInitialPageLoad)
       {
-        const test = localStorage.getItem(STORAGE_KEY);
-        let obj = ParseCashFlowModel(test);
-        if (!obj)
+        const storedString = localStorage.getItem(STORAGE_KEY);
+        let obj = new ExpenseCollectionModel();
+        obj.AddExpense();
+        if (storedString)
         {
-          obj = new CashFlowModel(MonthNames);
+          const test = JSON.parse(storedString);
+          obj = new ExpenseCollectionModel(test.PeriodNames, test.Expenses);
         }
-        console.log(obj);
-        setCashFlowModel(obj);
-        setSavingsRequiredPerPeriod(obj.Results.SavingsRequiredPerPeriod);
+        setExpenseCollection(obj);
+        _updateResults(obj);
         isInitialPageLoad = false;
       }
     }, []);
 
-    function saveCashFlowModelToLocalStorage()
+    function onChangeHandler(expenseCollectionModel)
     {
-      cashFlowModel.UpdateResults();
-      setSavingsRequiredPerPeriod(cashFlowModel.Results.SavingsRequiredPerPeriod);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cashFlowModel));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(expenseCollectionModel));
+      _updateResults(expenseCollectionModel);
+    }
+    function _updateResults(expenseCollection)
+    {
+      if (expenseCollection)
+      {
+        const cashFlowCalculator = new CashFlowCalculator(expenseCollection);
+        setResults(cashFlowCalculator.Results);
+      }
     }
 
     return (
       <>
         <h1>Cash Flow Tool</h1>
-        <h2>Basic cash flow tool, built in React.</h2>
+        <h2>Built in React and Javascript</h2>
+        <h3 className='sourceCodeList'>Source code: <a href='https://github.com/Fuji727/johnfujiwara.com/tree/main/app/demos/cashflow/page.js' target='_blank'>Next.js page</a>, <a href='https://github.com/Fuji727/johnfujiwara.com/tree/main/app/demos/cashflow/ExpenseCollectionModel.js' target='_blank'>model class</a>, <a href='https://github.com/Fuji727/johnfujiwara.com/tree/main/app/demos/cashflow/CashFlowCalculator.js' target='_blank'>calculator js</a>, and <a href='https://github.com/Fuji727/johnfujiwara.com/tree/main/app/demos/cashflow/cashflow.js' target='_blank'>React component</a></h3>
         {
-          !cashFlowModel ?
+          !expenseCollection ?
             <p><strong>Loading...</strong></p>
             :
             <>
               <p>This tool tells you exactly how much money you need to set aside each month in order to cover 
-                your bills. It can be hard to prepare for upcoming large bills that are not charged monthly, and 
-                this tool can help.
+                irregularly-scheduled bills. Think of it as your own personal escrow account plan.
               </p>
-              <p>In the first row of the table, give the expense a name. Then, enter the amount that is due in each month.</p>
-              <p>If you have more expenses you want to track, just click the "Add new expense" button and repeat.</p>
-              <CashFlow cashFlowModel={cashFlowModel} labelAdjustment={label => label.substring(0,3)} />
-              <button onClick={saveCashFlowModelToLocalStorage}>Save</button>
-              <hr />
-              <h3>Results:</h3>
-              <p>You should save ${savingsRequiredPerPeriod} per period.</p>
+              <p>It will also tell you exactly how much you need to have in the bank at the begining of the year, 
+                if your plan would otherwise overdraw your account at some point during the year.
+                (Don't worry, the plan will ensure that same amount will be in your account at the end of the year, 
+                so you'll be ready for next years&apos; payments.)</p>
+              <h3>Instructions:</h3>
+              <ol>
+                <li>All the cells in the table body are editable (any characters other than digits and periods are ignored)</li>
+                <li>Results are updated immediately</li>
+                <li>In the first column of the table, give the expense a name</li>
+                <li>Enter the amount that is due in each month</li>
+                <li>You can remove any unwanted expense rows with the corresponding "Delete" button</li>
+                <li>If you have more expenses that you want to track, click the "Add expense" button</li>
+              </ol>
+              <CashFlow expenseCollectionModel={expenseCollection} resultsModel={results} onChange={onChangeHandler} nameTransformFunction={n => n.substring(0,3)} />
             </>
         }
       </>
