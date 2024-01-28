@@ -69,8 +69,8 @@ import CashFlow from './cashflow.js';
                 <li>Results are updated immediately</li>
                 <li>In the first column of the table, give the expense a name</li>
                 <li>Enter the amount that is due in each month</li>
-                <li>You can remove any unwanted expense rows with the corresponding "Delete" button</li>
-                <li>If you have more expenses that you want to track, click the "Add expense" button</li>
+                <li>You can remove any unwanted expense rows with the corresponding &ldquo;Delete&rdquo; button</li>
+                <li>If you have more expenses that you want to track, click the &ldquo;Add expense&rdquo; button</li>
               </ol>
               <CashFlow expenseCollectionModel={expenseCollection} resultsModel={results} onChange={onChangeHandler} nameTransformFunction={n => n.substring(0,3)} />
             </>
