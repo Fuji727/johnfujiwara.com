@@ -12,7 +12,7 @@ export default function Home() {
       <p>Hello, my name is John Fujiwara and I am a full-stack web developer living with my family in beautiful University Place, a neighborhood of Tacoma, in Washington State, USA.</p>
       {/* <p>I&apos;ve been with my current employer for 17 years and have done very well for the company, my coworkers, and my family. But now I&apos;m ready for a work challenge that speaks more to my personal values and gives me more control over my time and work conditions.</p> */}
       <p>I have a broadly-applicable skillset in web standards and .NET development and an aptitude for understanding and solving problems. I have an ability to find sustainable solutions with real people and their needs in mind.</p>
-      <p>Please take a look at this site for an explanation of my specific development strengths, examples of my work (be sure to see my <Link href="/demos/cashflow">Cash Flow Tool</Link>), and more about the kind of employer I'm looking for.</p>
+      <p>Please take a look at this site for an explanation of my specific development strengths, examples of my work (be sure to see my <Link href="/demos/cashflow">Cash Flow Tool</Link>), and more about the kind of employer I&apos;m looking for.</p>
       <h2>My general development approach</h2>
       <p>After a Minimum Viable Product has been clearly defined according to project goals and the application architecture has been defined according to the needs of application uptime, end user locations, processing delays, etc., then development work can begin. This is the approach that I often take:</p>
       <ol>
@@ -54,7 +54,7 @@ export default function Home() {
       <details>
         <summary>Software Development and Problem-Solving (18 years&apos; experience)</summary>
         <p>OOP, TDD, Advanced debugging, optimizing systems</p>
-        <p>I take my work personally and see problems through to full resolution. I don't wait for someone else to find the answers for me.</p>
+        <p>I take my work personally and see problems through to full resolution. I don&apos;t wait for someone else to find the answers for me.</p>
         <p></p>
       </details>
       <h2>Team Leader (8 years&apos; experience)</h2>

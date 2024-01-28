@@ -89,7 +89,7 @@ export default function CashFlow({expenseCollectionModel, resultsModel, onChange
                 <hr />
                 <h3>Results:</h3>
                 <p>You should save {currencyFormatter.format(resultsModel.SavingsRequiredPerPeriod)} per {expenseCollection.PeriodNames.length == 12 && expenseCollection.PeriodNames[0].toLowerCase().startsWith('jan') ? 'month' : 'period'}.</p>
-                {resultsModel.BiggestShortfall < -0.00001 && <p>To ensure that you won't overdraw your escrow account, you need a starting balance of {currencyFormatter.format(-resultsModel.BiggestShortfall)}.</p>}
+                {resultsModel.BiggestShortfall < -0.00001 && <p>To ensure that you won&apos;t overdraw your escrow account, you need a starting balance of {currencyFormatter.format(-resultsModel.BiggestShortfall)}.</p>}
               </div>}
         </section>
     );

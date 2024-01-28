@@ -61,8 +61,8 @@ import CashFlow from './cashflow.js';
               </p>
               <p>It will also tell you exactly how much you need to have in the bank at the begining of the year, 
                 if your plan would otherwise overdraw your account at some point during the year.
-                (Don't worry, the plan will ensure that same amount will be in your account at the end of the year, 
-                so you'll be ready for next years&apos; payments.)</p>
+                (Don&apos;t worry, the plan will ensure that same amount will be in your account at the end of the year, 
+                so you&apos;ll be ready for next years&apos; payments.)</p>
               <h3>Instructions:</h3>
               <ol>
                 <li>All the cells in the table body are editable (any characters other than digits and periods are ignored)</li>
