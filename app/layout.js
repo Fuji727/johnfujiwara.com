@@ -14,10 +14,10 @@ export const metadata = {
 // html element:  className={baskerville.className}
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={baskerville.className}>
       <body>
         <header>
-          <h1>John Fujiwara</h1>
+          <h1><Link href="/">John Fujiwara</Link></h1>
           <nav>
             <ul>
               <li><Link href="/">Home</Link></li>
