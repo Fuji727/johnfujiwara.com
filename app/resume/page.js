@@ -7,6 +7,7 @@ export default function Home() {
   return (
     <main>
       <h1>Résumé</h1>
+      <h3><a href="./JFujiwara_Resume.pdf" target="_blank">Download PDF</a></h3>
       <aside>
         University Place, WA
       </aside>
