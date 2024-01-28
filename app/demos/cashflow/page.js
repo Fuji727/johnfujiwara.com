@@ -61,16 +61,16 @@ import CashFlow from './cashflow.js';
               </p>
               <p>It will also tell you exactly how much you need to have in the bank at the begining of the year, 
                 if your plan would otherwise overdraw your account at some point during the year.
-                (Don&apos;t worry, the plan will ensure that same amount will be in your account at the end of the year, 
-                so you&apos;ll be ready for next years&apos; payments.)</p>
+                (Don&apos;t worry, the plan will ensure that an equal amount will be in your account at the end of the year, 
+                so you&apos;ll be ready for next years&apos; payment plan.)</p>
               <h3>Instructions:</h3>
               <ol>
                 <li>All the cells in the table body are editable (any characters other than digits and periods are ignored)</li>
                 <li>Results are updated immediately</li>
-                <li>In the first column of the table, give the expense a name</li>
-                <li>Enter the amount that is due in each month</li>
-                <li>You can remove any unwanted expense rows with the corresponding &ldquo;Delete&rdquo; button</li>
-                <li>If you have more expenses that you want to track, click the &ldquo;Add expense&rdquo; button</li>
+                <li>In the first column, set the expense name</li>
+                <li>Enter the amount due in each month column (leave blank or &ldquo;0&rdquo; if nothing due that month)</li>
+                <li>To add more expenses to your plan, click the &ldquo;Add expense&rdquo; button under the table</li>
+                <li>You can remove an unwanted expense row with its corresponding &ldquo;Delete&rdquo; button</li>
               </ol>
               <CashFlow expenseCollectionModel={expenseCollection} resultsModel={results} onChange={onChangeHandler} nameTransformFunction={n => n.substring(0,3)} />
             </>
