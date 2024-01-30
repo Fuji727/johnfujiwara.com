@@ -92,7 +92,7 @@ body
 {
     display: grid;
     box-sizing: content-box;
-    grid-template-rows: auto auto 2em;
+    grid-template-rows: 2em auto 2em;
     gap: 1em 0;
     padding: 0 20px;
     max-width: 920px;
