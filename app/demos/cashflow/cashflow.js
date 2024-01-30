@@ -66,7 +66,7 @@ export default function CashFlow({expenseCollectionModel, resultsModel, onChange
                             <th scope="row"><input type="text" id={`expenseName${expenseIndex}`} data-expense-id={expenseIndex} onChange={expenseNameChangeHandler} defaultValue={expense.Name} /></th>
                             {expense.PeriodicPayments.map((thisPayment,paymentIndex) => {
                                 const thisKey = `e${expenseIndex}_p${paymentIndex}`;
-                                return <td key={thisKey}><input type="text" id={thisKey} data-expense-id={expenseIndex} data-payment-id={paymentIndex} onChange={paymentChangeHandler} defaultValue={thisPayment} /></td>
+                                return <td key={thisKey}><input type="number" min='0' id={thisKey} data-expense-id={expenseIndex} data-payment-id={paymentIndex} onChange={paymentChangeHandler} defaultValue={thisPayment} /></td>
                             })}
                             <td><button onClick={() => removeExpenseHandler(expenseIndex)}>Delete</button></td>
                         </tr>

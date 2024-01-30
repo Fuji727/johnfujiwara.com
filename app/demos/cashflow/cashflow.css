@@ -49,6 +49,10 @@
     background: transparent;
     border: none;
 }
+.cashflow > table > tbody input[type="number"] {
+    appearance: none;
+}
+
 .cashflow > table > tfoot {
     border-top: 2px solid rgba(0,0,0,85%);
 }

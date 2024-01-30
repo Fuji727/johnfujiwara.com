@@ -13,7 +13,7 @@ import CashFlow from './cashflow.js';
     const STORAGE_KEY = 'cashflow object';
     const [expenseCollection, setExpenseCollection] = React.useState(null);
     const [results, setResults] = React.useState(null);
-    let isInitialPageLoad = true;
+    let [ isInitialPageLoad, setIsInitialPageLoad ] = React.useState(true);
 
     React.useEffect(() => {
       if (isInitialPageLoad)
@@ -28,7 +28,7 @@ import CashFlow from './cashflow.js';
         }
         setExpenseCollection(obj);
         _updateResults(obj);
-        isInitialPageLoad = false;
+        setIsInitialPageLoad(false);
       }
     }, []);
 
