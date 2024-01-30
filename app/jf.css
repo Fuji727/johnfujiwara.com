@@ -92,8 +92,8 @@ body
 {
     display: grid;
     box-sizing: content-box;
-    grid-template-rows: 2em auto 2em;
-    gap: 1em 0;
+    grid-template-rows: minmax(min-content,max-content) auto 2em;
+    gap: 0 1em;
     padding: 0 20px;
     max-width: 920px;
     margin: 0 auto;
@@ -102,15 +102,25 @@ body
 body > header
 {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 1em;
   margin: 0;
 }
+@media only screen and (max-width: 480px)
+{
+  body > header
+  {
+    flex-direction: column;
+    gap: 0.33em;
+  }
+}
 body > header h1
 {
-  text-wrap: nowrap;
+  white-space: nowrap;
+  margin: 0;
   /* color: var(--highlight-color);
   text-shadow: rgba(0,0,0,65%) 0 2px 2px; */
 }
@@ -121,7 +131,7 @@ body > header h1 > a:link
 body > header nav > ul
 {
   display: flex;
-  gap: 2em;
+  gap: 0 1.5em;
   list-style: none;
   padding: 0;
   margin: 0;
