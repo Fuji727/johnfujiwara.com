@@ -20,7 +20,7 @@ import CashFlow from './cashflow.js';
       {
         const storedString = localStorage.getItem(STORAGE_KEY);
         let obj = new ExpenseCollectionModel();
-        obj.AddExpense();
+        //obj.AddExpense();
         if (storedString)
         {
           const test = JSON.parse(storedString);
@@ -63,16 +63,15 @@ import CashFlow from './cashflow.js';
                 if your plan would otherwise overdraw your account at some point during the year.
                 (Don&apos;t worry, the plan will ensure that an equal amount will be in your account at the end of the year, 
                 so you&apos;ll be ready for next years&apos; payment plan.)</p>
+              <CashFlow expenseCollectionModel={expenseCollection} resultsModel={results} onChange={onChangeHandler} nameTransformFunction={n => n.substring(0,3)} />
               <h3>Instructions:</h3>
               <ol>
-                <li>All the cells in the table body are editable (any characters other than digits and periods are ignored)</li>
-                <li>Results are updated immediately</li>
-                <li>In the first column, set the expense name</li>
-                <li>Enter the amount due in each month column (leave blank or &ldquo;0&rdquo; if nothing due that month)</li>
-                <li>To add more expenses to your plan, click the &ldquo;Add expense&rdquo; button under the table</li>
+                <li>Add an expense to your plan by clicking the &ldquo;Add expense&rdquo; button</li>
+                <li>Set the expense name and then open by clicking the &ldquo;+&rdquo;</li>
+                <li>Enter the amount due in each month field (leave blank or &ldquo;0&rdquo; if nothing is due that month)</li>
                 <li>You can remove an unwanted expense row with its corresponding &ldquo;Delete&rdquo; button</li>
+                <li>Results are updated immediately and saved to your browser&apos;s local storage</li>
               </ol>
-              <CashFlow expenseCollectionModel={expenseCollection} resultsModel={results} onChange={onChangeHandler} nameTransformFunction={n => n.substring(0,3)} />
             </>
         }
       </>

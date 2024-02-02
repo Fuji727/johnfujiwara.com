@@ -1,5 +1,5 @@
 .cashflow {
-    font: 11px Arial;
+    font: 1rem Arial;
     margin: 1em auto;
     border: 1px solid rgba(0,0,0,50%);
     border-radius: 0.5em;
@@ -7,64 +7,66 @@
     padding: 1em 0.75em;
     box-shadow: rgba(0,0,0,60%) 2px 2px 3px;
 }
-.cashflow > table {
-    border-collapse: collapse;
-    width: 100%;
-    table-layout: fixed;
-    overflow-wrap: break-word;
-    background: white;
-    margin: 0 0 0.5em;
+.cashflow details {
+    margin-bottom: 1em;
+    border: 1px solid lightslategray;
+    box-shadow: rgba(0,0,0,60%) 1px 1px 1px;
 }
-.cashflow > table th,
-.cashflow > table td {
-    border: 1px solid #ccc;
-    padding: 0.25em 0;
+.cashflow details > summary {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    list-style: none;
+    padding-inline: 1em;
+    padding-block: 0.5em;
+    font-weight: bold;
+    background-color: #eee;
 }
-.cashflow > table tr > th:first-child {
-    width: 12em;
+.cashflow details > summary span {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 0.8em;
 }
-.cashflow > table tr > th:first-child > input {
-    text-align: left;
+.cashflow details > summary::-webkit-details-marker {
+    display: none;
 }
-.cashflow > table tr > th:last-child {
-    width: 5em;
+.cashflow details > summary::before {
+    position: absolute;
+    left: 0;
+    content: " + ";
+    font-weight: bold;
+    white-space: pre;
 }
-.cashflow > table > thead {
-    background: #e2e2e2;
+.cashflow details[open] > summary::before {
+    content: " – ";
 }
-.cashflow > table > thead th {
-    padding: 0.25em;
-    text-align: left;
+.cashflow details > summary input {
+    width: 15em;
 }
-.cashflow > table > tbody > tr:nth-child(even) {
-    background-color: #f2f2f2;
+.cashflow .expenses .payments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: space-between;
+    padding-inline: 1em;
+    padding-block: 0.75em;
 }
-.cashflow > table > tbody > tr:hover {
-    background-color: #ddd;
+.cashflow .expenses .payments > .payment {
+    flex-basis: 0;
 }
-.cashflow > table > tbody input {
-    display: inline-block;
-    width: 100%;
-    text-align: right;
-    background: transparent;
-    border: none;
-}
-.cashflow > table > tbody input[type="number"] {
-    appearance: none;
-}
-
-.cashflow > table > tfoot {
-    border-top: 2px solid rgba(0,0,0,85%);
-}
-.cashflow > table > tfoot th,
-.cashflow > table > tfoot td {
-    border-color: transparent;
-}
-.cashflow > table > tfoot td {
+.cashflow .expenses .payments > .payment input {
+    display: block;
+    width: auto;
     text-align: right;
 }
-
 .cashflow > .results {
     margin-top: 1em;
     font-size: 1rem;
+}
+.cashflow .results .running-balance {
+    padding: 1em;
+}
+.cashflow .results .running-balance > * {
+    margin-block-end: 0.5em;
 }

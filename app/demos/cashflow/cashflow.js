@@ -49,49 +49,50 @@ export default function CashFlow({expenseCollectionModel, resultsModel, onChange
     }
 
     return expenseCollection && expenseCollection.PeriodNames && (
-        <section className="cashflow">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Expense name</th>
-                        {expenseCollection.PeriodNames.map(p =>
-                            <th key={`col_${p}`} scope="col">{nameTransformFunctionToUse(p)}</th>
-                        )}
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {expenseCollection && expenseCollection.Expenses && expenseCollection.Expenses.map((expense,expenseIndex) => (
-                        <tr key={`e${expenseIndex}`}>
-                            <th scope="row"><input type="text" id={`expenseName${expenseIndex}`} data-expense-id={expenseIndex} onChange={expenseNameChangeHandler} defaultValue={expense.Name} /></th>
-                            {expense.PeriodicPayments.map((thisPayment,paymentIndex) => {
+        <article className="cashflow">
+            <section className="expenses">
+                {expenseCollection && expenseCollection.Expenses && expenseCollection.Expenses.map((expense, expenseIndex) => (
+                    // open="open"
+                    <details key={`e${expenseIndex}`}>
+                        <summary>
+                            <input type="text" id={`expenseName${expenseIndex}`} data-expense-id={expenseIndex} onChange={expenseNameChangeHandler} defaultValue={expense.Name} />
+                            <span>(Total payments: {currencyFormatter.format(expense.TotalPayments)})</span>
+                            <button onClick={() => confirm('Are you sure you want to delete this expense?') && removeExpenseHandler(expenseIndex)}>Delete</button>
+                        </summary>
+                        <section className="payments">
+                            {expense.PeriodicPayments.map((thisPayment, paymentIndex) => {
                                 const thisKey = `e${expenseIndex}_p${paymentIndex}`;
-                                return <td key={thisKey}><input type="number" min='0' id={thisKey} data-expense-id={expenseIndex} data-payment-id={paymentIndex} onChange={paymentChangeHandler} defaultValue={thisPayment} /></td>
+                                return (<div class="payment" key={thisKey}>
+                                    <label>
+                                        {expenseCollection.PeriodNames[paymentIndex]}
+                                        <input type="number" min='0' step='0.01' id={thisKey} data-expense-id={expenseIndex} data-payment-id={paymentIndex} onChange={paymentChangeHandler} defaultValue={thisPayment} />
+                                    </label>
+                                    </div>);
                             })}
-                            <td><button onClick={() => removeExpenseHandler(expenseIndex)}>Delete</button></td>
-                        </tr>
-                    ))}
-                </tbody>
-                {resultsModel && resultsModel.BalanceByPeriod && resultsModel.BalanceByPeriod.length > 0 && (<tfoot>
-                    <tr>
-                        <th scope="row">Running Balance
-                            {resultsModel.BiggestShortfall < -0.00001 && <div>({currencyFormatter.format(-resultsModel.BiggestShortfall)} to start)</div>}
-                        </th>
-                        {resultsModel.BalanceByPeriod.map((balanceByPeriod,i) =>
-                            <td key={`bal${i}`}>{currencyFormatter.format(balanceByPeriod - resultsModel.BiggestShortfall)}</td>
-                        )}
-                        <td></td>
-                    </tr>
-                </tfoot>)}
-            </table>
-            <button onClick={addNewExpenseHandler}>Add expense</button>
-            {resultsModel && <div className='results'>
+                        </section>
+                    </details>
+                ))}
+                <button onClick={addNewExpenseHandler}>Add expense</button>
+            </section>
+            {resultsModel && resultsModel.SavingsRequiredPerPeriod > 0 && <section className='results'>
                 <hr />
                 <h3>Results:</h3>
                 <p>You should save {currencyFormatter.format(resultsModel.SavingsRequiredPerPeriod)} per {expenseCollection.PeriodNames.length == 12 && expenseCollection.PeriodNames[0].toLowerCase().startsWith('jan') ? 'month' : 'period'}.</p>
                 {resultsModel.BiggestShortfall < -0.00001 && <p>To ensure that you won&apos;t overdraw your escrow account, you need a starting balance of {currencyFormatter.format(-resultsModel.BiggestShortfall)}.</p>}
-              </div>}
-        </section>
+                {resultsModel && resultsModel.BalanceByPeriod && resultsModel.BalanceByPeriod.length > 0 && (<section className="results">
+                    <details>
+                        <summary>View running balance</summary>
+                        <div className="running-balance">
+                            {resultsModel.BalanceByPeriod.map((balanceByPeriod, i) => (
+                                <div key={`bal${i}`}>
+                                    {expenseCollection.PeriodNames[i]}: {currencyFormatter.format(balanceByPeriod - resultsModel.BiggestShortfall)}
+                                </div>)
+                            )}
+                        </div>
+                    </details>
+                </section>)}
+              </section>}
+        </article>
     );
 }
 let currencyFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });

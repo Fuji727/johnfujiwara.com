@@ -1,3 +1,5 @@
+import { FloatOrZero } from "./ExpenseCollectionModel.js";
+
 export default class CashFlowCalculator
 {
     constructor(expenseCollection)
@@ -9,7 +11,10 @@ export default class CashFlowCalculator
     {
         let returnObj = {};
         returnObj.TotalExpenses = 0;
-        this.ExpenseCollection.Expenses.forEach(exp => returnObj.TotalExpenses += floatOrZero(exp.PeriodicPayments.reduce((subtotal, payment) => subtotal += floatOrZero(payment), 0)));
+        this.ExpenseCollection.Expenses.forEach(exp => {
+            exp.TotalPayments = exp.PeriodicPayments.reduce((subtotal, payment) => subtotal += FloatOrZero(payment), 0);
+            returnObj.TotalExpenses += exp.TotalPayments;
+        });
         returnObj.SavingsRequiredPerPeriod = returnObj.TotalExpenses / this.ExpenseCollection.NumberOfPeriods;
         let savingsTotals = Array(this.ExpenseCollection.NumberOfPeriods).fill(0);
         let expenseTotals = Array(this.ExpenseCollection.NumberOfPeriods).fill(0);
@@ -20,7 +25,7 @@ export default class CashFlowCalculator
             totalSavings += returnObj.SavingsRequiredPerPeriod;
             savingsTotals[periodIndex] = totalSavings;
             this.ExpenseCollection.Expenses.forEach((expense, expenseIndex) => {
-                expenseTotals[periodIndex] += floatOrZero(expense.PeriodicPayments[periodIndex]);
+                expenseTotals[periodIndex] += FloatOrZero(expense.PeriodicPayments[periodIndex]);
             });
             totalExpenses += expenseTotals[periodIndex];
             periodBalances[periodIndex] = totalSavings - totalExpenses;
@@ -32,10 +37,4 @@ export default class CashFlowCalculator
         this.Results = returnObj;
         return returnObj;
     }
-}
-function floatOrZero(strNumber)
-{
-    let cleanStrNumber = String(strNumber).replace(/[^0-9.]/g, '');
-    const attempt = parseFloat(cleanStrNumber);
-    return isNaN(attempt) ? 0 : attempt;
 }

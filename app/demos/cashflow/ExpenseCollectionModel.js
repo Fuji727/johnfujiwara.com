@@ -21,8 +21,14 @@ class ExpenseModel
     {
         this.Name = expenseName;
         this.PeriodicPayments = periodicExpenseArray;
+        this.TotalPayments = periodicExpenseArray.reduce((prev, exp) => prev += FloatOrZero(exp));
     }
 }
 const MonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-export { ExpenseCollectionModel, ExpenseModel, MonthNames };
+function FloatOrZero(strNumber)
+{
+    let cleanStrNumber = String(strNumber).replace(/[^0-9.]/g, '');
+    const attempt = parseFloat(cleanStrNumber);
+    return isNaN(attempt) ? 0 : attempt;
+}
+export { ExpenseCollectionModel, ExpenseModel, MonthNames, FloatOrZero };
