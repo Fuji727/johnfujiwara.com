@@ -1,3 +1,3 @@
 ## Test Readme
 
-![Test diagram](diagrams/test.drawio)
+![Test diagram](diagrams/test.drawio.svg)
