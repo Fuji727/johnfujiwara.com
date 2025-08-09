@@ -34,7 +34,7 @@ npm run build
 npm run dev
 ```
 
-- Starts development server on `http://localhost:3000` in approximately 3 seconds
+- Starts development server on `http://localhost:3000` in approximately 2 seconds
 - NEVER CANCEL. Set timeout to 60+ seconds for initial startup
 - Server stays running until manually stopped
 
