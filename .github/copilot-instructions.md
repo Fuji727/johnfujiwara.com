@@ -14,7 +14,7 @@ cd /home/runner/work/johnfujiwara.com/johnfujiwara.com
 npm install
 ```
 
-- `npm install` - Takes approximately 60 seconds. NEVER CANCEL. Set timeout to 120+ seconds.
+- `npm install` - Takes approximately 2 minutes (120 seconds). NEVER CANCEL. Set timeout to 120+ seconds.
 
 ### Build Commands
 ```bash
