@@ -173,7 +173,7 @@ Current key dependencies from package.json:
 ### Performance
 - Build time: ~15 seconds (with network access)
 - Dev server startup: ~2 seconds
-- Lint time: ~10 seconds
+- Lint time: ~2 seconds
 - Page load time: <1 second (statically generated)
 
 ## Testing Strategy
