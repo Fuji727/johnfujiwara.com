@@ -44,7 +44,7 @@ npm run build
 npm start
 ```
 
-- Starts production server on `http://localhost:3000` in approximately 2 seconds
+- Starts production server on `http://localhost:3000` in approximately 1 second
 - Must run `npm run build` first
 - NEVER CANCEL. Set timeout to 60+ seconds
 
