@@ -53,7 +53,7 @@ npm start
 npm run lint
 ```
 
-- Takes approximately 10 seconds. Set timeout to 60+ seconds
+- Takes approximately 2 seconds. Set timeout to 60+ seconds
 - Currently shows some React Hook dependency warnings in Cash Flow Tool - these are non-critical
 - Always run linting before committing changes
 
