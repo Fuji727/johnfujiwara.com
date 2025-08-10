@@ -1,20 +1,21 @@
 import './jf.css';
 import Link from "next/link";
-import { Baskervville } from 'next/font/google'
- 
-const baskerville = Baskervville({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: '400',
-})
+// Google Fonts import - temporarily commented for testing due to network connectivity
+// import { Baskervville } from 'next/font/google'
+// 
+// const baskerville = Baskervville({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   weight: '400',
+//   fallback: ['Georgia', 'serif'],
+// })
 export const metadata = {
   title: 'John Fujiwara',
   description: 'John Fujiwara',
 }
-// html element:  className={baskerville.className}
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={baskerville.className}>
+    <html lang="en">
       <body>
         <header>
           <h1><Link href="/">John Fujiwara</Link></h1>
