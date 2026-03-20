@@ -1,5 +1,21 @@
 # Upgrade Notes
 
+## Next.js 15.5.14 Security Upgrade Completed (2026-03-19)
+
+Upgraded to address high-severity CVEs in Next.js 15.4.x:
+- `GHSA-mwv6-3258-q52c` — DoS via Server Components
+- `GHSA-h25m-26qc-wcjf` — HTTP request deserialization DoS with RSC
+- Plus 4 additional Next.js CVEs (not applicable to this project's feature set)
+- `ajv`, `flatted`, `minimatch` transitive ESLint dep vulnerabilities fixed via `npm audit fix`
+
+Changes made:
+- `next`: `15.4.8` → `^15.5.14`
+- `eslint-config-next`: `^15.4.6` → `^15.5.14`
+
+`npm audit` now reports 0 vulnerabilities. Build verified successful.
+
+---
+
 ## Next.js 15.4.6 Upgrade Completed
 
 This project has been successfully upgraded to:
